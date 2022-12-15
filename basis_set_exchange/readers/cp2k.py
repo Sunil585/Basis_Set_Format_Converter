@@ -34,16 +34,16 @@ Reader for CP2K basis sets
 Written by Susi Lehtola, 2021
 '''
 
-import re
+import regex
 from .. import lut
 from . import helpers
 
 # Shell entry: 'element names'
-element_shell_re = re.compile(r'^\s*(?P<sym>\w+)(?:\s+(?P<name>{}))+\s*$'.format(helpers.basis_name_re_str))
+element_shell_re = regex.compile(r'^\s*(?P<sym>\w+)(?:\s+(?P<name>{}))+\s*$'.format(helpers.basis_name_re_str))
 # Number of blocks
-nblocks_re = re.compile(r'^\s*(?P<nblocks>\d+)\s*$')
+nblocks_re = regex.compile(r'^\s*(?P<nblocks>\d+)\s*$')
 # Block entry: n lmin lmax nexp nshell(lmin) nshell(lmin+1) ... nshell(lmax-1) nshell(lmax)
-block_re = re.compile(r'^\s*(?P<n>\d+)\s+(?P<lmin>\d+)\s+(?P<lmax>\d+)\s+(?P<nprim>\d+)(?:\s+(?P<nshell>\d+))+\s*$')
+block_re = regex.compile(r'^\s*(?P<n>\d+)\s+(?P<lmin>\d+)\s+(?P<lmax>\d+)\s+(?P<nprim>\d+)(?:\s+(?P<nshell>\d+))+\s*$')
 
 # Function type: spherical by default
 _func_type = 'gto_spherical'
