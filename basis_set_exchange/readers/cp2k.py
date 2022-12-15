@@ -59,10 +59,7 @@ def _read_shell(basis_lines, bs_data):
     # Create entry
     element_sym = element_shell['sym'][0]
     element_Z = lut.element_Z_from_sym(element_sym, as_str=True)
-    if element_Z not in bs_data or 'electron_shells' not in bs_data[element_Z]:
-        element_data = helpers.create_element_data(bs_data, element_Z, 'electron_shells')
-    else:
-        element_data = bs_data[element_Z]
+    
 
     # Read the number of blocks
     nblocks = helpers.parse_line_regex_dict(nblocks_re, basis_lines[iline], 'nblocks')['nblocks'][0]
